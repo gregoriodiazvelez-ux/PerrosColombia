@@ -1,17 +1,17 @@
-import Header from "./components/Header";
-import StatsBar from "./components/StatsBar";
-import TrendingNiches from "./components/TrendingNiches";
-import DesignIdeas from "./components/DesignIdeas";
-import ColorTrends from "./components/ColorTrends";
-import MarketChart from "./components/MarketChart";
-import IdeaGenerator from "./components/IdeaGenerator";
-import QuickTips from "./components/QuickTips";
+import './index.css'
+import Header from './components/Header'
+import StatsBar from './components/StatsBar'
+import TrendingNiches from './components/TrendingNiches'
+import DesignIdeas from './components/DesignIdeas'
+import ColorTrends from './components/ColorTrends'
+import MarketChart from './components/MarketChart'
+import IdeaGenerator from './components/IdeaGenerator'
+import QuickTips from './components/QuickTips'
 
-export default function Home() {
+function App() {
   return (
     <div className="min-h-screen bg-gray-950">
       <Header />
-
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
         <StatsBar />
         <TrendingNiches />
@@ -20,8 +20,6 @@ export default function Home() {
         <MarketChart />
         <ColorTrends />
         <QuickTips />
-
-        {/* Footer */}
         <footer className="mt-12 pt-8 border-t border-gray-800/50 text-center">
           <p className="text-gray-600 text-sm">
             TrendPrint<span className="text-fuchsia-500">AI</span> — Your print-on-demand intelligence hub
@@ -32,5 +30,7 @@ export default function Home() {
         </footer>
       </main>
     </div>
-  );
+  )
 }
+
+export default App

@@ -1,25 +1,17 @@
-"use client";
-
 import {
-  AreaChart,
-  Area,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
+  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer,
-  BarChart,
-  Bar,
-  Cell,
 } from "recharts";
 import { BarChart2, TrendingUp } from "lucide-react";
 import { marketInsights, topSellers } from "../data/trends";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-gray-900 border border-gray-700/60 rounded-xl p-3 shadow-xl">
         <p className="text-gray-400 text-xs mb-1">{label}</p>
+        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
         {payload.map((p: any, i: number) => (
           <p key={i} className="text-white text-sm font-semibold">
             {p.name === "revenue" ? `$${p.value.toLocaleString()}` : `${p.value} orders`}
@@ -36,7 +28,6 @@ const colors = ["#8b5cf6", "#a78bfa", "#c4b5fd", "#7c3aed", "#6d28d9"];
 export default function MarketChart() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 mb-6">
-      {/* Revenue Chart */}
       <div className="lg:col-span-3 rounded-2xl border border-gray-700/50 bg-gray-900/50 p-6">
         <div className="flex items-center justify-between mb-6">
           <div>
@@ -60,12 +51,7 @@ export default function MarketChart() {
             <XAxis dataKey="month" tick={{ fill: "#6b7280", fontSize: 12 }} axisLine={false} tickLine={false} />
             <YAxis tick={{ fill: "#6b7280", fontSize: 12 }} axisLine={false} tickLine={false} />
             <Tooltip content={<CustomTooltip />} />
-            <Area
-              type="monotone"
-              dataKey="revenue"
-              stroke="#8b5cf6"
-              strokeWidth={2.5}
-              fill="url(#revenueGrad)"
+            <Area type="monotone" dataKey="revenue" stroke="#8b5cf6" strokeWidth={2.5} fill="url(#revenueGrad)"
               dot={{ fill: "#8b5cf6", strokeWidth: 0, r: 4 }}
               activeDot={{ r: 6, fill: "#a78bfa", stroke: "#8b5cf6", strokeWidth: 2 }}
             />
@@ -73,7 +59,6 @@ export default function MarketChart() {
         </ResponsiveContainer>
       </div>
 
-      {/* Top Sellers */}
       <div className="lg:col-span-2 rounded-2xl border border-gray-700/50 bg-gray-900/50 p-6">
         <div className="flex items-center gap-2 mb-5">
           <BarChart2 className="w-4 h-4 text-fuchsia-400" />
@@ -92,10 +77,7 @@ export default function MarketChart() {
               <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
                 <div
                   className="h-full rounded-full transition-all duration-700"
-                  style={{
-                    width: `${(item.sales / 3500) * 100}%`,
-                    backgroundColor: colors[i],
-                  }}
+                  style={{ width: `${(item.sales / 3500) * 100}%`, backgroundColor: colors[i] }}
                 />
               </div>
             </div>
